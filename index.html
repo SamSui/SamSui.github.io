@@ -7,524 +7,163 @@
 <meta name="description" content="Personal homepage of SamSui — 34 open source projects on GitHub.">
 <style>
 :root{
-  --bg:#0d1117; --panel:#161b22; --border:#30363d;
-  --fg:#e6edf3; --muted:#8b949e; --accent:#58a6ff;
-  --c0:#58a6ff; --c1:#3fb950; --c2:#f0883e; --c3:#e34c26;
-  --c4:#f1e05a; --c5:#3178c6; --c6:#2b7489; --c7:#563d7c;
+  --bg:#f6f8fa; --card:#ffffff; --border:#e5e7eb; --border-strong:#d8dee4;
+  --ink:#1f2328; --muted:#656d76; --subtle:#9aa4af; --accent:#2563eb;
+  --accent-soft:#eff6ff; --shadow:0 1px 2px rgba(31,35,40,.04),0 8px 24px rgba(31,35,40,.06);
+  --shadow-hover:0 2px 4px rgba(31,35,40,.06),0 16px 32px rgba(31,35,40,.10);
+  --radius:14px;
 }
 *{box-sizing:border-box;margin:0;padding:0}
-body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue','PingFang SC','Microsoft YaHei',sans-serif;background:var(--bg);color:var(--fg);line-height:1.6}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue','PingFang SC','Microsoft YaHei',sans-serif;
+  background:linear-gradient(180deg,#ffffff 0%, var(--bg) 380px);
+  color:var(--ink); line-height:1.6; -webkit-font-smoothing:antialiased}
 a{color:var(--accent);text-decoration:none}
-.wrap{max-width:1080px;margin:0 auto;padding:24px 20px 80px}
-.hero{display:flex;align-items:center;gap:20px;flex-wrap:wrap;padding:20px 0;border-bottom:1px solid var(--border);margin-bottom:4px}
-.avatar{width:92px;height:92px;border-radius:50%;border:3px solid var(--border);background:#000}
-.hero h1{font-size:26px}
-.login{color:var(--muted);font-size:16px}
-.bio{color:var(--muted);font-size:14px;margin-top:4px}
-.badges{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
-.badges .chip{background:var(--panel);border:1px solid var(--border);border-radius:20px;padding:4px 14px;font-size:13px;color:var(--fg)}
-.badges .chip.low{color:var(--muted)}
-.summary{margin:26px 0;background:var(--panel);border:1px solid var(--border);border-radius:10px;padding:20px}
-.summary h2{font-size:15px;color:var(--muted);margin-bottom:12px;font-weight:600}
-.langbar{display:flex;height:12px;border-radius:6px;overflow:hidden;background:var(--panel2);margin-bottom:12px}
-.lb{color:#000;font-size:0;letter-spacing:0}
-.lb:nth-child(1){background:var(--c0)} .lb:nth-child(2){background:var(--c1)}
-.lb:nth-child(3){background:var(--c2)} .lb:nth-child(4){background:var(--c3)}
-.lb:nth-child(5){background:var(--c4)} .lb:nth-child(6){background:var(--c5)}
-.lb:nth-child(7){background:var(--c6)} .lb:nth-child(8){background:var(--c7)}
-.legend{display:flex;gap:16px;flex-wrap:wrap;font-size:13px;color:var(--muted)}
-.lc::before{content:"";display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:6px;background:var(--c)}
-.section-title{font-size:18px;font-weight:600;margin:30px 0 4px}
-.section-sub{color:var(--muted);font-size:13px;margin-bottom:16px}
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:16px}
-.card{display:flex;flex-direction:column;background:var(--panel);border:1px solid var(--border);border-radius:10px;padding:18px;transition:transform .12s ease,border-color .12s ease;color:var(--fg)}
-.card:hover{transform:translateY(-3px);border-color:var(--accent)}
-.card-top{display:flex;justify-content:space-between;align-items:center;gap:10px}
-.repo-name{font-size:15px;font-weight:600;color:var(--accent);word-break:break-all}
-.badge{font-size:11px;padding:3px 10px;border-radius:12px;white-space:nowrap;background:#1f2937;color:var(--muted);border:1px solid var(--border)}
-.desc{color:var(--muted);font-size:13px;margin:10px 0;flex:1;min-height:40px}
-.topics{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px}
-.topic{background:#152c3a;color:#58a6ff;font-size:11px;padding:2px 8px;border-radius:10px}
-.card-meta{display:flex;align-items:center;gap:14px;font-size:12px;color:var(--muted);border-top:1px solid var(--border);padding-top:10px}
-.stat{color:var(--fg)}
-.updated{margin-left:auto;color:var(--muted)}
-.arrow{text-decoration:none}
-footer{margin-top:40px;color:var(--muted);font-size:13px;text-align:center;border-top:1px solid var(--border);padding-top:20px}
-@media(max-width:460px){.grid{grid-template-columns:1fr}}
+.wrap{max-width:1120px;margin:0 auto;padding:0 24px 90px}
+.nav{display:flex;align-items:center;justify-content:space-between;padding:20px 0;border-bottom:1px solid var(--border)}
+.nav .brand{font-weight:700;font-size:17px;display:flex;align-items:center;gap:9px}
+.nav .brand .dot{width:10px;height:10px;border-radius:50%;background:var(--accent)}
+.nav .links{display:flex;gap:22px;font-size:14px;color:var(--muted)}
+.nav .links a:hover{color:var(--accent)}
+.hero{display:flex;gap:36px;align-items:center;padding:52px 0 44px;flex-wrap:wrap}
+.avatar{width:116px;height:116px;border-radius:28px;object-fit:cover;
+  border:1px solid var(--border);background:#fff;box-shadow:var(--shadow)}
+.hero h1{font-size:34px;font-weight:800;letter-spacing:-.02em}
+.hero h1 .user{color:var(--muted);font-weight:500;font-size:20px}
+.hero .bio{color:var(--muted);font-size:16px;margin-top:6px}
+.statrow{display:flex;gap:14px;flex-wrap:wrap;margin-top:20px}
+.statrow .stat{background:#fff;border:1px solid var(--border);border-radius:10px;padding:8px 16px;
+  font-size:14px;color:var(--muted);display:flex;gap:8px;align-items:center}
+.statrow .stat b{color:var(--ink);font-size:16px}
+.statrow .cta{background:var(--accent);color:#fff;border:none;border-radius:10px;padding:9px 18px;
+  font-size:14px;font-weight:600;display:inline-flex;align-items:center;gap:6px}
+.statrow .cta:hover{filter:brightness(.95)}
+.langcard{background:#fff;border:1px solid var(--border);border-radius:var(--radius);
+  box-shadow:var(--shadow);padding:22px 24px;margin:0 0 34px}
+.langcard .cap{font-size:13px;color:var(--muted);font-weight:600;letter-spacing:.04em;
+  text-transform:uppercase;margin-bottom:14px}
+.langbar{display:flex;width:100%;height:12px;border-radius:8px;overflow:hidden;background:var(--bg);gap:2px}
+.lb{height:100%;border-radius:4px}
+.legend{display:flex;gap:18px;flex-wrap:wrap;margin-top:14px;font-size:13px;color:var(--muted)}
+.lc{display:flex;align-items:center;gap:6px}
+.lc i{width:10px;height:10px;border-radius:3px;display:inline-block}
+.lc b{color:var(--ink);font-weight:600}
+.toolbar{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;margin:8px 0 22px}
+.toolbar h2{font-size:22px;font-weight:800;letter-spacing:-.01em}
+.toolbar .sub{color:var(--muted);font-size:13px;margin-top:2px}
+.controls{display:flex;gap:10px;flex-wrap:wrap}
+.input,.select{font:inherit;font-size:14px;padding:9px 14px;border:1px solid var(--border-strong);
+  border-radius:10px;background:#fff;color:var(--ink);outline:none}
+.input{min-width:220px}
+.input:focus,.select:focus{border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-soft)}
+.select{cursor:pointer}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(330px,1fr));gap:18px}
+.card{display:flex;flex-direction:column;background:var(--card);border:1px solid var(--border);
+  border-radius:var(--radius);padding:20px 22px;box-shadow:var(--shadow);color:inherit;
+  transition:transform .18s ease,box-shadow .18s ease,border-color .18s ease;position:relative;overflow:hidden}
+.card:hover{transform:translateY(-4px);box-shadow:var(--shadow-hover);border-color:var(--accent)}
+.card .accentbar{position:absolute;top:0;left:0;right:0;height:3px;
+  background:linear-gradient(90deg,var(--accent),#7c3aed);opacity:0;transition:opacity .18s}
+.card:hover .accentbar{opacity:1}
+.card-top{display:flex;justify-content:space-between;align-items:flex-start;gap:10px}
+.repo-name{font-size:16px;font-weight:700;color:var(--accent);word-break:break-all}
+.langpill{font-size:12px;color:var(--muted);display:flex;align-items:center;gap:6px;white-space:nowrap;padding-top:3px}
+.langpill i{width:9px;height:9px;border-radius:50%;display:inline-block}
+.desc{color:var(--muted);font-size:13.5px;margin:10px 0;flex:1;display:-webkit-box;
+  -webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;min-height:42px}
+.topics{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px;min-height:10px}
+.topic{background:var(--bg);border:1px solid var(--border);color:var(--muted);
+  font-size:11.5px;padding:2px 9px;border-radius:20px}
+.card-meta{display:flex;align-items:center;gap:16px;font-size:12.5px;color:var(--muted);
+  border-top:1px solid var(--border);padding-top:12px}
+.stat{display:flex;align-items:center;gap:5px;color:var(--ink);font-weight:600;font-size:13px}
+.site{margin-left:auto;color:var(--accent);font-weight:600;font-size:13px}
+.empty{display:none;text-align:center;color:var(--muted);padding:60px 0;font-size:15px}
+footer{margin-top:52px;border-top:1px solid var(--border);padding-top:24px;
+  color:var(--subtle);font-size:13px;text-align:center}
+@media(max-width:560px){.hero{gap:20px;padding:36px 0}.hero h1{font-size:26px}.grid{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
 <div class="wrap">
+  <nav class="nav">
+    <div class="brand"><span class="dot"></span> Sui Xiang</div>
+    <div class="links"><a href="#repos">Projects</a><a href="https://github.com/SamSui" target="_blank" rel="noopener">GitHub</a></div>
+  </nav>
+
   <div class="hero">
     <img class="avatar" src="https://avatars.githubusercontent.com/u/10190449?v=4" alt="avatar">
     <div>
-      <h1>Sui Xiang <span class="login">@SamSui</span></h1>
-      <p class="bio">Personal open-source homepage · GitHub Projects showcase</p>
-      <div class="badges">
-        <span class="chip">34 repos</span>
-        <span class="chip">0 stars</span>
-        <span class="chip">4 languages</span>
-        <span class="chip low">Member since 2014</span>
-        <a class="chip" href="https://github.com/SamSui" target="_blank" rel="noopener">github.com/SamSui</a>
+      <h1>Hi, I'm Sui Xiang <span class="user">@SamSui</span></h1>
+      <p class="bio">Independent developer · exploring AI agents, backend &amp; open source.</p>
+      <div class="statrow">
+        <span class="stat"><b>34</b> repositories</span>
+        <span class="stat"><b>0</b> stars total</span>
+        <span class="stat"><b>4</b> languages</span>
+        <a class="cta" href="https://github.com/SamSui" target="_blank" rel="noopener">View on GitHub &#8599;</a>
       </div>
     </div>
   </div>
 
-  <section class="summary">
-    <h2>Language breakdown</h2>
-    <div class="langbar"><span class="lb" style="width:100%" title="Java">Java</span><span class="lb" style="width:33%" title="Python">Python</span><span class="lb" style="width:33%" title="HTML">HTML</span><span class="lb" style="width:17%" title="JavaScript">JavaScript</span></div>
-    <div class="legend"><span class="lc c0" style="--c:var(--c0)">Java</span><span class="lc c1" style="--c:var(--c1)">Python</span><span class="lc c2" style="--c:var(--c2)">HTML</span><span class="lc c3" style="--c:var(--c3)">JavaScript</span></div>
-  </section>
-
-  <div class="section-title">All repositories</div>
-  <div class="section-sub">Personal projects and contributions across 34 repositories.</div>
-  <div class="grid">
-    <a class="card" href="https://github.com/SamSui/Agent-Learning-Hub" target="_blank" rel="noopener">
-      <div class="card-top">
-        <span class="repo-name">Agent Learning Hub</span>
-        <span class="badge lang">Other</span>
-      </div>
-      <p class="desc">AI Agent 学习路线与资料库收集</p>
-      <div class="topics"></div>
-      <div class="card-meta">
-        <span class="stat" title="Stars">&#9733; 0</span>
-        <span class="stat" title="Forks">&#10133; 0</span>
-        <span class="updated" title="Last push">Updated 2026-06-05</span>
-<a class="site" href="https://datawhalechina.github.io/Agent-Learning-Hub/" target="_blank" rel="noopener">&#128279;</a>
-      </div>
-    </a>    <a class="card" href="https://github.com/SamSui/ai-specs" target="_blank" rel="noopener">
-      <div class="card-top">
-        <span class="repo-name">ai specs</span>
-        <span class="badge lang">Python</span>
-      </div>
-      <p class="desc">No description provided.</p>
-      <div class="topics"></div>
-      <div class="card-meta">
-        <span class="stat" title="Stars">&#9733; 0</span>
-        <span class="stat" title="Forks">&#10133; 0</span>
-        <span class="updated" title="Last push">Updated 2026-09-21</span>
-
-      </div>
-    </a>    <a class="card" href="https://github.com/SamSui/Aurify" target="_blank" rel="noopener">
-      <div class="card-top">
-        <span class="repo-name">Aurify</span>
-        <span class="badge lang">HTML</span>
-      </div>
-      <p class="desc">dsh（DeepSeek Harness）专利撰写把关人：先检索中国专利判断点子值不值得写（可反驳可批评），再走五方对齐访谈与八章交底书全流程：附图、仿真实验、七维审查、docx/PDF 导出。</p>
-      <div class="topics"></div>
-      <div class="card-meta">
-        <span class="stat" title="Stars">&#9733; 0</span>
-        <span class="stat" title="Forks">&#10133; 0</span>
-        <span class="updated" title="Last push">Updated 2026-09-21</span>
-
-      </div>
-    </a>    <a class="card" href="https://github.com/SamSui/awesome-LLMs-In-China" target="_blank" rel="noopener">
-      <div class="card-top">
-        <span class="repo-name">awesome LLMs In China</span>
-        <span class="badge lang">Other</span>
-      </div>
-      <p class="desc">中国大模型</p>
-      <div class="topics"></div>
-      <div class="card-meta">
-        <span class="stat" title="Stars">&#9733; 0</span>
-        <span class="stat" title="Forks">&#10133; 0</span>
-        <span class="updated" title="Last push">Updated 2024-06-07</span>
-
-      </div>
-    </a>    <a class="card" href="https://github.com/SamSui/BidMaster-Pro" target="_blank" rel="noopener">
-      <div class="card-top">
-        <span class="repo-name">BidMaster Pro</span>
-        <span class="badge lang">Python</span>
-      </div>
-      <p class="desc">全流程 智能招投标 Agent：标书生成 · 招投标解读 · 标书检查 · 标书文档ai排版 · 商机发现 一键完成。 21 项合规检查 · 多模型切换 · RAG 知识库 · OCR 抽取。 从招标公告到可交付 docx 文档，全流程 AI 自动化。</p>
-      <div class="topics"></div>
-      <div class="card-meta">
-        <span class="stat" title="Stars">&#9733; 0</span>
-        <span class="stat" title="Forks">&#10133; 0</span>
-        <span class="updated" title="Last push">Updated 2026-09-20</span>
-
-      </div>
-    </a>    <a class="card" href="https://github.com/SamSui/bucket4j" target="_blank" rel="noopener">
-      <div class="card-top">
-        <span class="repo-name">bucket4j</span>
-        <span class="badge lang">Other</span>
-      </div>
-      <p class="desc">Java rate limiting library based on token-bucket algorithm.</p>
-      <div class="topics"></div>
-      <div class="card-meta">
-        <span class="stat" title="Stars">&#9733; 0</span>
-        <span class="stat" title="Forks">&#10133; 0</span>
-        <span class="updated" title="Last push">Updated 2024-08-22</span>
-<a class="site" href="https://bucket4j.com" target="_blank" rel="noopener">&#128279;</a>
-      </div>
-    </a>    <a class="card" href="https://github.com/SamSui/bucket4j-spring-boot-starter" target="_blank" rel="noopener">
-      <div class="card-top">
-        <span class="repo-name">bucket4j spring boot starter</span>
-        <span class="badge lang">Other</span>
-      </div>
-      <p class="desc">Spring Boot Starter for Bucket4j</p>
-      <div class="topics"></div>
-      <div class="card-meta">
-        <span class="stat" title="Stars">&#9733; 0</span>
-        <span class="stat" title="Forks">&#10133; 0</span>
-        <span class="updated" title="Last push">Updated 2024-08-26</span>
-
-      </div>
-    </a>    <a class="card" href="https://github.com/SamSui/crawlab" target="_blank" rel="noopener">
-      <div class="card-top">
-        <span class="repo-name">crawlab</span>
-        <span class="badge lang">Other</span>
-      </div>
-      <p class="desc">Distributed web crawler admin platform for spiders management regardless of languages and frameworks. 分布式爬虫管理平台，支持任何语言和框架</p>
-      <div class="topics"></div>
-      <div class="card-meta">
-        <span class="stat" title="Stars">&#9733; 0</span>
-        <span class="stat" title="Forks">&#10133; 0</span>
-        <span class="updated" title="Last push">Updated 2024-08-29</span>
-<a class="site" href="https://www.crawlab.cn" target="_blank" rel="noopener">&#128279;</a>
-      </div>
-    </a>    <a class="card" href="https://github.com/SamSui/dive-into-spring-ai" target="_blank" rel="noopener">
-      <div class="card-top">
-        <span class="repo-name">dive into spring ai</span>
-        <span class="badge lang">Other</span>
-      </div>
-      <p class="desc">《动手学SpringAI》包含SSE流/Agent智能体/知识图谱RAG/FunctionCall/历史消息/图片生成/图片理解/Embedding/VectorDatabase/RAG</p>
-      <div class="topics"></div>
-      <div class="card-meta">
-        <span class="stat" title="Stars">&#9733; 0</span>
-        <span class="stat" title="Forks">&#10133; 0</span>
-        <span class="updated" title="Last push">Updated 2024-08-15</span>
-<a class="site" href="https://www.jarcheng.top/blog/project/spring-ai/intro.html" target="_blank" rel="noopener">&#128279;</a>
-      </div>
-    </a>    <a class="card" href="https://github.com/SamSui/form-generator" target="_blank" rel="noopener">
-      <div class="card-top">
-        <span class="repo-name">form generator</span>
-        <span class="badge lang">Other</span>
-      </div>
-      <p class="desc">:sparkles:Element UI表单设计及代码生成器</p>
-      <div class="topics"></div>
-      <div class="card-meta">
-        <span class="stat" title="Stars">&#9733; 0</span>
-        <span class="stat" title="Forks">&#10133; 0</span>
-        <span class="updated" title="Last push">Updated 2023-04-13</span>
-<a class="site" href="https://jakhuang.github.io/form-generator" target="_blank" rel="noopener">&#128279;</a>
-      </div>
-    </a>    <a class="card" href="https://github.com/SamSui/JavaRecord" target="_blank" rel="noopener">
-      <div class="card-top">
-        <span class="repo-name">JavaRecord</span>
-        <span class="badge lang">Other</span>
-      </div>
-      <p class="desc">「Java学习+面试指南」一份涵盖大部分 Java 程序员所需要掌握的核心知识。打造Java后端知识体系，帮助Java初学者成长</p>
-      <div class="topics"></div>
-      <div class="card-meta">
-        <span class="stat" title="Stars">&#9733; 0</span>
-        <span class="stat" title="Forks">&#10133; 0</span>
-        <span class="updated" title="Last push">Updated 2024-04-24</span>
-
-      </div>
-    </a>    <a class="card" href="https://github.com/SamSui/jdk21-springboot-demo" target="_blank" rel="noopener">
-      <div class="card-top">
-        <span class="repo-name">jdk21 springboot demo</span>
-        <span class="badge lang">Java</span>
-      </div>
-      <p class="desc">No description provided.</p>
-      <div class="topics"></div>
-      <div class="card-meta">
-        <span class="stat" title="Stars">&#9733; 0</span>
-        <span class="stat" title="Forks">&#10133; 0</span>
-        <span class="updated" title="Last push">Updated 2023-12-21</span>
-
-      </div>
-    </a>    <a class="card" href="https://github.com/SamSui/jmeter-prometheus-plugin" target="_blank" rel="noopener">
-      <div class="card-top">
-        <span class="repo-name">jmeter prometheus plugin</span>
-        <span class="badge lang">Other</span>
-      </div>
-      <p class="desc">A Prometheus Listener for Apache JMeter that exposes results in an http API</p>
-      <div class="topics"></div>
-      <div class="card-meta">
-        <span class="stat" title="Stars">&#9733; 0</span>
-        <span class="stat" title="Forks">&#10133; 0</span>
-        <span class="updated" title="Last push">Updated 2023-08-03</span>
-
-      </div>
-    </a>    <a class="card" href="https://github.com/SamSui/kkFileView" target="_blank" rel="noopener">
-      <div class="card-top">
-        <span class="repo-name">kkFileView</span>
-        <span class="badge lang">Other</span>
-      </div>
-      <p class="desc">Universal File Online Preview Project based on Spring-Boot</p>
-      <div class="topics"></div>
-      <div class="card-meta">
-        <span class="stat" title="Stars">&#9733; 0</span>
-        <span class="stat" title="Forks">&#10133; 0</span>
-        <span class="updated" title="Last push">Updated 2024-03-08</span>
-<a class="site" href="https://kkview.cn" target="_blank" rel="noopener">&#128279;</a>
-      </div>
-    </a>    <a class="card" href="https://github.com/SamSui/knife4j" target="_blank" rel="noopener">
-      <div class="card-top">
-        <span class="repo-name">knife4j</span>
-        <span class="badge lang">Other</span>
-      </div>
-      <p class="desc">Knife4j is a set of Swagger2 and OpenAPI3 All-in-one enhancement solution</p>
-      <div class="topics"></div>
-      <div class="card-meta">
-        <span class="stat" title="Stars">&#9733; 0</span>
-        <span class="stat" title="Forks">&#10133; 0</span>
-        <span class="updated" title="Last push">Updated 2024-08-13</span>
-<a class="site" href="https://doc.xiaominfo.com" target="_blank" rel="noopener">&#128279;</a>
-      </div>
-    </a>    <a class="card" href="https://github.com/SamSui/lowcode-engine" target="_blank" rel="noopener">
-      <div class="card-top">
-        <span class="repo-name">lowcode engine</span>
-        <span class="badge lang">Other</span>
-      </div>
-      <p class="desc">An enterprise-class low-code technology stack with scale-out design / 一套面向扩展设计的企业级低代码技术体系</p>
-      <div class="topics"></div>
-      <div class="card-meta">
-        <span class="stat" title="Stars">&#9733; 0</span>
-        <span class="stat" title="Forks">&#10133; 0</span>
-        <span class="updated" title="Last push">Updated 2024-02-04</span>
-<a class="site" href="https://lowcode-engine.cn" target="_blank" rel="noopener">&#128279;</a>
-      </div>
-    </a>    <a class="card" href="https://github.com/SamSui/movie-web" target="_blank" rel="noopener">
-      <div class="card-top">
-        <span class="repo-name">movie web</span>
-        <span class="badge lang">Other</span>
-      </div>
-      <p class="desc">A small web app for watching movies and shows easily</p>
-      <div class="topics"></div>
-      <div class="card-meta">
-        <span class="stat" title="Stars">&#9733; 0</span>
-        <span class="stat" title="Forks">&#10133; 0</span>
-        <span class="updated" title="Last push">Updated 2024-04-06</span>
-<a class="site" href="https://movie-web.github.io/docs/" target="_blank" rel="noopener">&#128279;</a>
-      </div>
-    </a>    <a class="card" href="https://github.com/SamSui/nginxconfig.io" target="_blank" rel="noopener">
-      <div class="card-top">
-        <span class="repo-name">nginxconfig.io</span>
-        <span class="badge lang">Other</span>
-      </div>
-      <p class="desc">⚙️ NGINX config generator on steroids 💉</p>
-      <div class="topics"></div>
-      <div class="card-meta">
-        <span class="stat" title="Stars">&#9733; 0</span>
-        <span class="stat" title="Forks">&#10133; 0</span>
-        <span class="updated" title="Last push">Updated 2024-04-03</span>
-<a class="site" href="https://do.co/nginxconfig" target="_blank" rel="noopener">&#128279;</a>
-      </div>
-    </a>    <a class="card" href="https://github.com/SamSui/Open-Sora" target="_blank" rel="noopener">
-      <div class="card-top">
-        <span class="repo-name">Open Sora</span>
-        <span class="badge lang">Other</span>
-      </div>
-      <p class="desc">Open-Sora: Democratizing Efficient Video Production for All</p>
-      <div class="topics"></div>
-      <div class="card-meta">
-        <span class="stat" title="Stars">&#9733; 0</span>
-        <span class="stat" title="Forks">&#10133; 0</span>
-        <span class="updated" title="Last push">Updated 2024-04-25</span>
-
-      </div>
-    </a>    <a class="card" href="https://github.com/SamSui/OpenBidKit_Yibiao" target="_blank" rel="noopener">
-      <div class="card-top">
-        <span class="repo-name">OpenBidKit_Yibiao</span>
-        <span class="badge lang">JavaScript</span>
-      </div>
-      <p class="desc">开箱即用的AI标书编写工具，标书AI生成工具，投标工具箱、知识库、标书查重、废标项检查，完全开源免费，欢迎使用</p>
-      <div class="topics"></div>
-      <div class="card-meta">
-        <span class="stat" title="Stars">&#9733; 0</span>
-        <span class="stat" title="Forks">&#10133; 0</span>
-        <span class="updated" title="Last push">Updated 2026-09-20</span>
-<a class="site" href="https://yibiao.pro" target="_blank" rel="noopener">&#128279;</a>
-      </div>
-    </a>    <a class="card" href="https://github.com/SamSui/openclaw" target="_blank" rel="noopener">
-      <div class="card-top">
-        <span class="repo-name">openclaw</span>
-        <span class="badge lang">Other</span>
-      </div>
-      <p class="desc">龙虾项目</p>
-      <div class="topics"></div>
-      <div class="card-meta">
-        <span class="stat" title="Stars">&#9733; 0</span>
-        <span class="stat" title="Forks">&#10133; 0</span>
-        <span class="updated" title="Last push">Updated 2026-04-17</span>
-
-      </div>
-    </a>    <a class="card" href="https://github.com/SamSui/snake-game" target="_blank" rel="noopener">
-      <div class="card-top">
-        <span class="repo-name">snake game</span>
-        <span class="badge lang">HTML</span>
-      </div>
-      <p class="desc">?? A polished snake game with bomb obstacles and humanized snake</p>
-      <div class="topics"></div>
-      <div class="card-meta">
-        <span class="stat" title="Stars">&#9733; 0</span>
-        <span class="stat" title="Forks">&#10133; 0</span>
-        <span class="updated" title="Last push">Updated 2026-05-18</span>
-
-      </div>
-    </a>    <a class="card" href="https://github.com/SamSui/spring-ai" target="_blank" rel="noopener">
-      <div class="card-top">
-        <span class="repo-name">spring ai</span>
-        <span class="badge lang">Other</span>
-      </div>
-      <p class="desc">An Application Framework for AI Engineering</p>
-      <div class="topics"></div>
-      <div class="card-meta">
-        <span class="stat" title="Stars">&#9733; 0</span>
-        <span class="stat" title="Forks">&#10133; 0</span>
-        <span class="updated" title="Last push">Updated 2024-03-05</span>
-<a class="site" href="https://docs.spring.io/spring-ai/reference/0.8-SNAPSHOT/" target="_blank" rel="noopener">&#128279;</a>
-      </div>
-    </a>    <a class="card" href="https://github.com/SamSui/spring-boot-demo" target="_blank" rel="noopener">
-      <div class="card-top">
-        <span class="repo-name">spring boot demo</span>
-        <span class="badge lang">Java</span>
-      </div>
-      <p class="desc">springboot3.x demo</p>
-      <div class="topics"></div>
-      <div class="card-meta">
-        <span class="stat" title="Stars">&#9733; 0</span>
-        <span class="stat" title="Forks">&#10133; 0</span>
-        <span class="updated" title="Last push">Updated 2024-09-11</span>
-
-      </div>
-    </a>    <a class="card" href="https://github.com/SamSui/SpringBoot31" target="_blank" rel="noopener">
-      <div class="card-top">
-        <span class="repo-name">SpringBoot31</span>
-        <span class="badge lang">Java</span>
-      </div>
-      <p class="desc">springboot3.1.x</p>
-      <div class="topics"></div>
-      <div class="card-meta">
-        <span class="stat" title="Stars">&#9733; 0</span>
-        <span class="stat" title="Forks">&#10133; 0</span>
-        <span class="updated" title="Last push">Updated 2023-10-19</span>
-
-      </div>
-    </a>    <a class="card" href="https://github.com/SamSui/SpringWebFlux" target="_blank" rel="noopener">
-      <div class="card-top">
-        <span class="repo-name">SpringWebFlux</span>
-        <span class="badge lang">Java</span>
-      </div>
-      <p class="desc">spring web flux demo</p>
-      <div class="topics"></div>
-      <div class="card-meta">
-        <span class="stat" title="Stars">&#9733; 0</span>
-        <span class="stat" title="Forks">&#10133; 0</span>
-        <span class="updated" title="Last push">Updated 2023-12-19</span>
-
-      </div>
-    </a>    <a class="card" href="https://github.com/SamSui/suiworkspace" target="_blank" rel="noopener">
-      <div class="card-top">
-        <span class="repo-name">suiworkspace</span>
-        <span class="badge lang">Other</span>
-      </div>
-      <p class="desc">No description provided.</p>
-      <div class="topics"></div>
-      <div class="card-meta">
-        <span class="stat" title="Stars">&#9733; 0</span>
-        <span class="stat" title="Forks">&#10133; 0</span>
-        <span class="updated" title="Last push">Updated 2026-09-21</span>
-
-      </div>
-    </a>    <a class="card" href="https://github.com/SamSui/test-spring-boot-starter" target="_blank" rel="noopener">
-      <div class="card-top">
-        <span class="repo-name">test spring boot starter</span>
-        <span class="badge lang">Other</span>
-      </div>
-      <p class="desc">自定义s3 starter</p>
-      <div class="topics"></div>
-      <div class="card-meta">
-        <span class="stat" title="Stars">&#9733; 0</span>
-        <span class="stat" title="Forks">&#10133; 0</span>
-        <span class="updated" title="Last push">Updated 2023-03-25</span>
-
-      </div>
-    </a>    <a class="card" href="https://github.com/SamSui/Test_1" target="_blank" rel="noopener">
-      <div class="card-top">
-        <span class="repo-name">Test_1</span>
-        <span class="badge lang">Other</span>
-      </div>
-      <p class="desc">No description provided.</p>
-      <div class="topics"></div>
-      <div class="card-meta">
-        <span class="stat" title="Stars">&#9733; 0</span>
-        <span class="stat" title="Forks">&#10133; 0</span>
-        <span class="updated" title="Last push">Updated 2014-12-17</span>
-
-      </div>
-    </a>    <a class="card" href="https://github.com/SamSui/transmittable-thread-local" target="_blank" rel="noopener">
-      <div class="card-top">
-        <span class="repo-name">transmittable thread local</span>
-        <span class="badge lang">Other</span>
-      </div>
-      <p class="desc">📌 a missing Java std lib(simple &amp; 0-dependency) for framework/middleware, provide an enhanced InheritableThreadLocal that transmits values between threads even using thread pooling components.</p>
-      <div class="topics"></div>
-      <div class="card-meta">
-        <span class="stat" title="Stars">&#9733; 0</span>
-        <span class="stat" title="Forks">&#10133; 0</span>
-        <span class="updated" title="Last push">Updated 2024-08-13</span>
-<a class="site" href="https://github.com/alibaba/transmittable-thread-local" target="_blank" rel="noopener">&#128279;</a>
-      </div>
-    </a>    <a class="card" href="https://github.com/SamSui/v2rayA" target="_blank" rel="noopener">
-      <div class="card-top">
-        <span class="repo-name">v2rayA</span>
-        <span class="badge lang">Other</span>
-      </div>
-      <p class="desc">A web GUI client of Project V which supports VMess, VLESS, SS, SSR, Trojan, Tuic and Juicity protocols. 🚀</p>
-      <div class="topics"></div>
-      <div class="card-meta">
-        <span class="stat" title="Stars">&#9733; 0</span>
-        <span class="stat" title="Forks">&#10133; 0</span>
-        <span class="updated" title="Last push">Updated 2024-07-16</span>
-
-      </div>
-    </a>    <a class="card" href="https://github.com/SamSui/v2rayN" target="_blank" rel="noopener">
-      <div class="card-top">
-        <span class="repo-name">v2rayN</span>
-        <span class="badge lang">Other</span>
-      </div>
-      <p class="desc">A GUI client for Windows, support Xray core and v2fly core and others</p>
-      <div class="topics"></div>
-      <div class="card-meta">
-        <span class="stat" title="Stars">&#9733; 0</span>
-        <span class="stat" title="Forks">&#10133; 0</span>
-        <span class="updated" title="Last push">Updated 2023-11-18</span>
-<a class="site" href="https://1.2345345.xyz" target="_blank" rel="noopener">&#128279;</a>
-      </div>
-    </a>    <a class="card" href="https://github.com/SamSui/VelocityDemo" target="_blank" rel="noopener">
-      <div class="card-top">
-        <span class="repo-name">VelocityDemo</span>
-        <span class="badge lang">Java</span>
-      </div>
-      <p class="desc">an example of the velocity </p>
-      <div class="topics"></div>
-      <div class="card-meta">
-        <span class="stat" title="Stars">&#9733; 0</span>
-        <span class="stat" title="Forks">&#10133; 0</span>
-        <span class="updated" title="Last push">Updated 2014-12-17</span>
-
-      </div>
-    </a>    <a class="card" href="https://github.com/SamSui/VelocityDemo_3" target="_blank" rel="noopener">
-      <div class="card-top">
-        <span class="repo-name">VelocityDemo_3</span>
-        <span class="badge lang">Java</span>
-      </div>
-      <p class="desc">VelocityDemo_3</p>
-      <div class="topics"></div>
-      <div class="card-meta">
-        <span class="stat" title="Stars">&#9733; 0</span>
-        <span class="stat" title="Forks">&#10133; 0</span>
-        <span class="updated" title="Last push">Updated 2014-12-17</span>
-
-      </div>
-    </a>
+  <div class="langcard">
+    <div class="cap">Language breakdown</div>
+    <div class="langbar"><span class="lb" style="width:100%;background:#b07219" title="Java: 6"></span><span class="lb" style="width:33%;background:#3572A5" title="Python: 2"></span><span class="lb" style="width:33%;background:#e34c26" title="HTML: 2"></span><span class="lb" style="width:17%;background:#f1e05a" title="JavaScript: 1"></span></div>
+    <div class="legend"><span class="lc"><i style="background:#b07219"></i>Java&nbsp;<b>6</b></span><span class="lc"><i style="background:#3572A5"></i>Python&nbsp;<b>2</b></span><span class="lc"><i style="background:#e34c26"></i>HTML&nbsp;<b>2</b></span><span class="lc"><i style="background:#f1e05a"></i>JavaScript&nbsp;<b>1</b></span></div>
   </div>
 
-  <footer>Generated by SamSui's homepage · © Sui Xiang · Hosted on GitHub Pages</footer>
+  <div class="toolbar" id="repos">
+    <div>
+      <h2>All repositories</h2>
+      <div class="sub">Personal projects and contributions across 34 repositories.</div>
+    </div>
+    <div class="controls">
+      <input class="input" id="q" type="search" placeholder="Search repositories…">
+      <select class="select" id="langf"><option value="">All languages</option><option value="Java">Java (6)</option><option value="Python">Python (2)</option><option value="HTML">HTML (2)</option><option value="JavaScript">JavaScript (1)</option></select>
+      <select class="select" id="sortf">
+        <option value="stars">Sort by Stars</option>
+        <option value="name">Sort by Name</option>
+        <option value="updated">Recently updated</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="grid" id="grid"></div>
+  <div class="empty" id="empty">No repositories match your filters.</div>
+
+  <footer>Built for SamSui · Hosted on GitHub Pages · © </footer>
 </div>
+
+<script>
+const REPOS = [{"name": "Agent-Learning-Hub", "nameFmt": "Agent Learning Hub", "desc": "AI Agent 学习路线与资料库收集", "lang": "Other", "langColor": "#8b8b8b", "stars": 0, "forks": 0, "url": "https://github.com/SamSui/Agent-Learning-Hub", "homepage": "https://datawhalechina.github.io/Agent-Learning-Hub/", "topics": [], "updated": "2026-06-05"}, {"name": "ai-specs", "nameFmt": "ai specs", "desc": "No description provided.", "lang": "Python", "langColor": "#3572A5", "stars": 0, "forks": 0, "url": "https://github.com/SamSui/ai-specs", "homepage": "", "topics": [], "updated": "2026-09-21"}, {"name": "Aurify", "nameFmt": "Aurify", "desc": "dsh（DeepSeek Harness）专利撰写把关人：先检索中国专利判断点子值不值得写（可反驳可批评），再走五方对齐访谈与八章交底书全流程：附图、仿真实验、七维审查、docx/PDF 导出。", "lang": "HTML", "langColor": "#e34c26", "stars": 0, "forks": 0, "url": "https://github.com/SamSui/Aurify", "homepage": "", "topics": [], "updated": "2026-09-21"}, {"name": "awesome-LLMs-In-China", "nameFmt": "awesome LLMs In China", "desc": "中国大模型", "lang": "Other", "langColor": "#8b8b8b", "stars": 0, "forks": 0, "url": "https://github.com/SamSui/awesome-LLMs-In-China", "homepage": "", "topics": [], "updated": "2024-06-07"}, {"name": "BidMaster-Pro", "nameFmt": "BidMaster Pro", "desc": "全流程 智能招投标 Agent：标书生成 · 招投标解读 · 标书检查 · 标书文档ai排版 · 商机发现 一键完成。 21 项合规检查 · 多模型切换 · RAG 知识库 · OCR 抽取。 从招标公告到可交付 docx 文档，全流程 AI 自动化。", "lang": "Python", "langColor": "#3572A5", "stars": 0, "forks": 0, "url": "https://github.com/SamSui/BidMaster-Pro", "homepage": "", "topics": [], "updated": "2026-09-20"}, {"name": "bucket4j", "nameFmt": "bucket4j", "desc": "Java rate limiting library based on token-bucket algorithm.", "lang": "Other", "langColor": "#8b8b8b", "stars": 0, "forks": 0, "url": "https://github.com/SamSui/bucket4j", "homepage": "https://bucket4j.com", "topics": [], "updated": "2024-08-22"}, {"name": "bucket4j-spring-boot-starter", "nameFmt": "bucket4j spring boot starter", "desc": "Spring Boot Starter for Bucket4j", "lang": "Other", "langColor": "#8b8b8b", "stars": 0, "forks": 0, "url": "https://github.com/SamSui/bucket4j-spring-boot-starter", "homepage": "", "topics": [], "updated": "2024-08-26"}, {"name": "crawlab", "nameFmt": "crawlab", "desc": "Distributed web crawler admin platform for spiders management regardless of languages and frameworks. 分布式爬虫管理平台，支持任何语言和框架", "lang": "Other", "langColor": "#8b8b8b", "stars": 0, "forks": 0, "url": "https://github.com/SamSui/crawlab", "homepage": "https://www.crawlab.cn", "topics": [], "updated": "2024-08-29"}, {"name": "dive-into-spring-ai", "nameFmt": "dive into spring ai", "desc": "《动手学SpringAI》包含SSE流/Agent智能体/知识图谱RAG/FunctionCall/历史消息/图片生成/图片理解/Embedding/VectorDatabase/RAG", "lang": "Other", "langColor": "#8b8b8b", "stars": 0, "forks": 0, "url": "https://github.com/SamSui/dive-into-spring-ai", "homepage": "https://www.jarcheng.top/blog/project/spring-ai/intro.html", "topics": [], "updated": "2024-08-15"}, {"name": "form-generator", "nameFmt": "form generator", "desc": ":sparkles:Element UI表单设计及代码生成器", "lang": "Other", "langColor": "#8b8b8b", "stars": 0, "forks": 0, "url": "https://github.com/SamSui/form-generator", "homepage": "https://jakhuang.github.io/form-generator", "topics": [], "updated": "2023-04-13"}, {"name": "JavaRecord", "nameFmt": "JavaRecord", "desc": "「Java学习+面试指南」一份涵盖大部分 Java 程序员所需要掌握的核心知识。打造Java后端知识体系，帮助Java初学者成长", "lang": "Other", "langColor": "#8b8b8b", "stars": 0, "forks": 0, "url": "https://github.com/SamSui/JavaRecord", "homepage": "", "topics": [], "updated": "2024-04-24"}, {"name": "jdk21-springboot-demo", "nameFmt": "jdk21 springboot demo", "desc": "No description provided.", "lang": "Java", "langColor": "#b07219", "stars": 0, "forks": 0, "url": "https://github.com/SamSui/jdk21-springboot-demo", "homepage": "", "topics": [], "updated": "2023-12-21"}, {"name": "jmeter-prometheus-plugin", "nameFmt": "jmeter prometheus plugin", "desc": "A Prometheus Listener for Apache JMeter that exposes results in an http API", "lang": "Other", "langColor": "#8b8b8b", "stars": 0, "forks": 0, "url": "https://github.com/SamSui/jmeter-prometheus-plugin", "homepage": "", "topics": [], "updated": "2023-08-03"}, {"name": "kkFileView", "nameFmt": "kkFileView", "desc": "Universal File Online Preview Project based on Spring-Boot", "lang": "Other", "langColor": "#8b8b8b", "stars": 0, "forks": 0, "url": "https://github.com/SamSui/kkFileView", "homepage": "https://kkview.cn", "topics": [], "updated": "2024-03-08"}, {"name": "knife4j", "nameFmt": "knife4j", "desc": "Knife4j is a set of Swagger2 and OpenAPI3 All-in-one enhancement solution", "lang": "Other", "langColor": "#8b8b8b", "stars": 0, "forks": 0, "url": "https://github.com/SamSui/knife4j", "homepage": "https://doc.xiaominfo.com", "topics": [], "updated": "2024-08-13"}, {"name": "lowcode-engine", "nameFmt": "lowcode engine", "desc": "An enterprise-class low-code technology stack with scale-out design / 一套面向扩展设计的企业级低代码技术体系", "lang": "Other", "langColor": "#8b8b8b", "stars": 0, "forks": 0, "url": "https://github.com/SamSui/lowcode-engine", "homepage": "https://lowcode-engine.cn", "topics": [], "updated": "2024-02-04"}, {"name": "movie-web", "nameFmt": "movie web", "desc": "A small web app for watching movies and shows easily", "lang": "Other", "langColor": "#8b8b8b", "stars": 0, "forks": 0, "url": "https://github.com/SamSui/movie-web", "homepage": "https://movie-web.github.io/docs/", "topics": [], "updated": "2024-04-06"}, {"name": "nginxconfig.io", "nameFmt": "nginxconfig.io", "desc": "⚙️ NGINX config generator on steroids 💉", "lang": "Other", "langColor": "#8b8b8b", "stars": 0, "forks": 0, "url": "https://github.com/SamSui/nginxconfig.io", "homepage": "https://do.co/nginxconfig", "topics": [], "updated": "2024-04-03"}, {"name": "Open-Sora", "nameFmt": "Open Sora", "desc": "Open-Sora: Democratizing Efficient Video Production for All", "lang": "Other", "langColor": "#8b8b8b", "stars": 0, "forks": 0, "url": "https://github.com/SamSui/Open-Sora", "homepage": "", "topics": [], "updated": "2024-04-25"}, {"name": "OpenBidKit_Yibiao", "nameFmt": "OpenBidKit_Yibiao", "desc": "开箱即用的AI标书编写工具，标书AI生成工具，投标工具箱、知识库、标书查重、废标项检查，完全开源免费，欢迎使用", "lang": "JavaScript", "langColor": "#f1e05a", "stars": 0, "forks": 0, "url": "https://github.com/SamSui/OpenBidKit_Yibiao", "homepage": "https://yibiao.pro", "topics": [], "updated": "2026-09-20"}, {"name": "openclaw", "nameFmt": "openclaw", "desc": "龙虾项目", "lang": "Other", "langColor": "#8b8b8b", "stars": 0, "forks": 0, "url": "https://github.com/SamSui/openclaw", "homepage": "", "topics": [], "updated": "2026-04-17"}, {"name": "snake-game", "nameFmt": "snake game", "desc": "?? A polished snake game with bomb obstacles and humanized snake", "lang": "HTML", "langColor": "#e34c26", "stars": 0, "forks": 0, "url": "https://github.com/SamSui/snake-game", "homepage": "", "topics": [], "updated": "2026-05-18"}, {"name": "spring-ai", "nameFmt": "spring ai", "desc": "An Application Framework for AI Engineering", "lang": "Other", "langColor": "#8b8b8b", "stars": 0, "forks": 0, "url": "https://github.com/SamSui/spring-ai", "homepage": "https://docs.spring.io/spring-ai/reference/0.8-SNAPSHOT/", "topics": [], "updated": "2024-03-05"}, {"name": "spring-boot-demo", "nameFmt": "spring boot demo", "desc": "springboot3.x demo", "lang": "Java", "langColor": "#b07219", "stars": 0, "forks": 0, "url": "https://github.com/SamSui/spring-boot-demo", "homepage": "", "topics": [], "updated": "2024-09-11"}, {"name": "SpringBoot31", "nameFmt": "SpringBoot31", "desc": "springboot3.1.x", "lang": "Java", "langColor": "#b07219", "stars": 0, "forks": 0, "url": "https://github.com/SamSui/SpringBoot31", "homepage": "", "topics": [], "updated": "2023-10-19"}, {"name": "SpringWebFlux", "nameFmt": "SpringWebFlux", "desc": "spring web flux demo", "lang": "Java", "langColor": "#b07219", "stars": 0, "forks": 0, "url": "https://github.com/SamSui/SpringWebFlux", "homepage": "", "topics": [], "updated": "2023-12-19"}, {"name": "suiworkspace", "nameFmt": "suiworkspace", "desc": "No description provided.", "lang": "Other", "langColor": "#8b8b8b", "stars": 0, "forks": 0, "url": "https://github.com/SamSui/suiworkspace", "homepage": "", "topics": [], "updated": "2026-09-21"}, {"name": "test-spring-boot-starter", "nameFmt": "test spring boot starter", "desc": "自定义s3 starter", "lang": "Other", "langColor": "#8b8b8b", "stars": 0, "forks": 0, "url": "https://github.com/SamSui/test-spring-boot-starter", "homepage": "", "topics": [], "updated": "2023-03-25"}, {"name": "Test_1", "nameFmt": "Test_1", "desc": "No description provided.", "lang": "Other", "langColor": "#8b8b8b", "stars": 0, "forks": 0, "url": "https://github.com/SamSui/Test_1", "homepage": "", "topics": [], "updated": "2014-12-17"}, {"name": "transmittable-thread-local", "nameFmt": "transmittable thread local", "desc": "📌 a missing Java std lib(simple & 0-dependency) for framework/middleware, provide an enhanced InheritableThreadLocal that transmits values between threads even using thread pooling components.", "lang": "Other", "langColor": "#8b8b8b", "stars": 0, "forks": 0, "url": "https://github.com/SamSui/transmittable-thread-local", "homepage": "https://github.com/alibaba/transmittable-thread-local", "topics": [], "updated": "2024-08-13"}, {"name": "v2rayA", "nameFmt": "v2rayA", "desc": "A web GUI client of Project V which supports VMess, VLESS, SS, SSR, Trojan, Tuic and Juicity protocols. 🚀", "lang": "Other", "langColor": "#8b8b8b", "stars": 0, "forks": 0, "url": "https://github.com/SamSui/v2rayA", "homepage": "", "topics": [], "updated": "2024-07-16"}, {"name": "v2rayN", "nameFmt": "v2rayN", "desc": "A GUI client for Windows, support Xray core and v2fly core and others", "lang": "Other", "langColor": "#8b8b8b", "stars": 0, "forks": 0, "url": "https://github.com/SamSui/v2rayN", "homepage": "https://1.2345345.xyz", "topics": [], "updated": "2023-11-18"}, {"name": "VelocityDemo", "nameFmt": "VelocityDemo", "desc": "an example of the velocity ", "lang": "Java", "langColor": "#b07219", "stars": 0, "forks": 0, "url": "https://github.com/SamSui/VelocityDemo", "homepage": "", "topics": [], "updated": "2014-12-17"}, {"name": "VelocityDemo_3", "nameFmt": "VelocityDemo_3", "desc": "VelocityDemo_3", "lang": "Java", "langColor": "#b07219", "stars": 0, "forks": 0, "url": "https://github.com/SamSui/VelocityDemo_3", "homepage": "", "topics": [], "updated": "2014-12-17"}];
+const grid=document.getElementById('grid'),empty=document.getElementById('empty');
+const q=document.getElementById('q'),langf=document.getElementById('langf'),sortf=document.getElementById('sortf');
+function render(){
+  let list=REPOS.slice();
+  const t=q.value.trim().toLowerCase();
+  const l=langf.value;
+  if(t) list=list.filter(r=>(r.name+r.desc+r.nameFmt).toLowerCase().includes(t));
+  if(l) list=list.filter(r=>r.lang===l);
+  const s=sortf.value==='name'?'name':sortf.value==='updated'?'updated':'stars';
+  list.sort((a,b)=> s==='stars'? b.stars-a.stars : s==='updated'? (b.updated<a.updated?1:-1) : a.nameFmt.localeCompare(b.nameFmt));
+  grid.innerHTML=list.map(renderCard).join('');
+  empty.style.display=list.length?'none':'block';
+}
+function esc(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
+function cleanUrl(u){return /^https?:\/\//i.test(u)?u:'';}
+function renderCard(r){
+  let topics=r.topics.map(t=>`<span class="topic">${esc(t)}</span>`).join('');
+  let home=r.homepage?`<a class="site" href="${esc(cleanUrl(r.homepage))}" target="_blank" rel="noopener">&#128279; site</a>`:'';
+  return `<a class="card" href="${esc(cleanUrl(r.url))}" target="_blank" rel="noopener">
+    <span class="accentbar"></span>
+    <div class="card-top"><span class="repo-name">${esc(r.nameFmt)}</span>
+      <span class="langpill"><i style="background:${r.langColor}"></i>${esc(r.lang)}</span></div>
+    <p class="desc">${esc(r.desc)}</p>
+    <div class="topics">${topics}</div>
+    <div class="card-meta"><span class="stat">&#9733; ${r.stars}</span><span class="stat">&#10133; ${r.forks}</span>
+      <span>Updated ${esc(r.updated)}</span>${home}</div>
+  </a>`;
+}
+q.addEventListener('input',render);langf.addEventListener('change',render);sortf.addEventListener('change',render);
+render();
+</script>
 </body>
 </html>
